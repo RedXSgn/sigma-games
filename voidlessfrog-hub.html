@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="https://cdn.jsdelivr.net/gh/RedXSgn/sigma-games@main/">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voidlessfrog - Game Hub</title>
+    <meta name="title" content="Voidlessfrog">
+    <meta name="description" content="Play unlimited games on Voidlessfrog. Fast, free, no downloads—Geometry Dash, 1v1.lol, Cookie Clicker, and 50+ more unblocked games.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://voidlessfrog.dev/">
+    <meta property="og:title" content="Voidlessfrog - Game Hub">
+    <meta property="og:description" content="Play unlimited games - 50+ games including DOOM, Geometry Dash, 1v1.lol, Cookie Clicker and more!">
+    <meta name="twitter:card" content="summary_large_image">
+    <style>
+        :root {
+            --primary: #00ff14;
+            --primary-hover: #00dd00;
+            --primary-light: rgba(0, 255, 20, 0.1);
+            --primary-lighter: rgba(0, 255, 20, 0.05);
+            --accent: #8b5cf6;
+            --accent-light: rgba(139, 92, 246, 0.1);
+            --text: #f1f5f9;
+            --text-muted: #94a3b8;
+            --text-light: #64748b;
+            --bg: #0f172a;
+            --bg-secondary: #1e293b;
+            --surface: #1e293b;
+            --surface-hover: #334155;
+            --border: #334155;
+            --border-light: #475569;
+            --glass: rgba(30, 41, 59, 0.8);
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.5);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.6);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.7);
+            --radius: 12px;
+            --radius-lg: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0a1a0a 0%, #0a3a0a 50%, #051505 100%);
+            color: var(--text);
+            transition: all 0.3s ease;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0a4d0a 0%, #0a3a0a 100%);
+            border-bottom: 3px solid var(--primary);
+            color: var(--primary);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 0 20px rgba(0, 255, 20, 0.3);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--primary);
+            text-shadow: 0 0 20px var(--primary), 0 0 40px rgba(0, 255, 20, 0.5);
+        }
+
+        .search-container {
+            display: flex;
+            flex: 1;
+            max-width: 500px;
+            gap: 0.75rem;
+            min-width: 200px;
+        }
+
+        input[type="text"],
+        select {
+            padding: 0.875rem 1rem;
+            border: 2px solid var(--primary);
+            border-radius: var(--radius);
+            background: rgba(10, 20, 10, 0.9);
+            color: var(--primary);
+            font-family: 'Courier New', monospace;
+            font-size: 15px;
+            outline: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 255, 20, 0.2);
+        }
+
+        input[type="text"]:focus,
+        select:focus {
+            box-shadow: 0 0 20px rgba(0, 255, 20, 0.6);
+            border-color: var(--primary);
+        }
+
+        input[type="text"]::placeholder {
+            color: #00aa00;
+        }
+
+        select {
+            min-width: 120px;
+            cursor: pointer;
+        }
+
+        .control-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        button {
+            background: rgba(0, 255, 20, 0.1);
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 0.75rem 1.25rem;
+            cursor: pointer;
+            border-radius: var(--radius);
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 255, 20, 0.2);
+        }
+
+        button:hover {
+            background: var(--primary);
+            color: #0a0a0a;
+            box-shadow: 0 0 20px rgba(0, 255, 20, 0.6);
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            padding-bottom: 6rem;
+        }
+
+        .count-badge {
+            display: inline-block;
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius);
+            font-size: 14px;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--primary);
+        }
+
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+            padding: 1rem 0;
+        }
+
+        .game-card {
+            background: rgba(0, 30, 0, 0.7);
+            border: 2px solid #00aa00;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 0 15px rgba(0, 255, 20, 0.1);
+        }
+
+        .game-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--primary);
+            box-shadow: 0 0 30px rgba(0, 255, 20, 0.5);
+            background: rgba(0, 50, 0, 0.9);
+        }
+
+        .game-thumbnail {
+            width: 100%;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #0a2a0a 0%, #051505 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .game-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .game-card:hover .game-thumbnail img {
+            transform: scale(1.05);
+        }
+
+        .game-thumbnail.no-image {
+            background: linear-gradient(135deg, var(--primary) 0%, #00aa00 100%);
+            color: #0a0a0a;
+            font-size: 0.8em;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .game-info {
+            padding: 1.25rem 1rem;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .game-name {
+            font-size: 0.95em;
+            color: var(--primary);
+            font-weight: bold;
+            line-height: 1.3;
+            margin-bottom: 0.5rem;
+        }
+
+        .game-category {
+            font-size: 0.75em;
+            color: #00aa00;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+        }
+
+        .play-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--primary);
+            color: #0a0a0a;
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        .play-btn:hover {
+            background: var(--primary-hover);
+            box-shadow: 0 0 20px rgba(0, 255, 20, 0.6);
+            transform: scale(1.05);
+        }
+
+        .game-viewer {
+            position: fixed;
+            inset: 0;
+            background: #0a0a0a;
+            z-index: 1000;
+            display: none;
+            flex-direction: column;
+        }
+
+        .game-viewer.active {
+            display: flex;
+        }
+
+        .viewer-header {
+            background: linear-gradient(135deg, #0a4d0a 0%, #0a3a0a 100%);
+            color: var(--primary);
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 0 20px rgba(0, 255, 20, 0.3);
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .viewer-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .viewer-controls {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .viewer-controls button {
+            padding: 0.625rem 1rem;
+            background: rgba(0, 255, 20, 0.1);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .viewer-controls button:hover {
+            background: var(--primary);
+            color: #0a0a0a;
+        }
+
+        iframe {
+            flex-grow: 1;
+            border: none;
+            width: 100%;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #00aa00;
+            font-size: 1.1em;
+        }
+
+        .no-results::before {
+            content: "[ NO GAMES FOUND ]";
+            display: block;
+            font-size: 1.3em;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            border-top: 2px solid var(--primary);
+            padding: 1.5rem;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-hover);
+            text-shadow: 0 0 10px rgba(0, 255, 20, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+
+            .search-container {
+                width: 100%;
+            }
+
+            .game-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 1.25rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .game-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .game-card:hover {
+                transform: translateY(-5px) scale(1.01);
+            }
+        }
+
+        details {
+            margin: 1.5rem 0;
+        }
+
+        summary {
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 1rem;
+            background: rgba(0, 255, 20, 0.05);
+            border-left: 3px solid var(--primary);
+            color: var(--primary);
+            transition: all 0.3s ease;
+            border-radius: var(--radius);
+        }
+
+        summary:hover {
+            background: rgba(0, 255, 20, 0.1);
+            text-shadow: 0 0 10px rgba(0, 255, 20, 0.5);
+        }
+
+        hr {
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            margin: 1.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">⚡ VOIDLESSFROG ⚡</div>
+            <div class="search-container">
+                <input type="text" id="searchBar" placeholder="Search games..." oninput="filterGames()">
+                <select id="sortOptions" onchange="sortGames()">
+                    <option value="name">Name</option>
+                    <option value="id">Date Added</option>
+                    <option value="category">Category</option>
+                </select>
+                <select id="categoryFilter" onchange="filterGames()">
+                    <option value="">All Categories</option>
+                </select>
+            </div>
+            <div class="control-buttons">
+                <button onclick="location.reload()" title="Refresh">🔄 Refresh</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="count-badge" id="gameCount">Loading games...</div>
+
+        <details open>
+            <summary>Featured Games</summary>
+            <div class="game-grid" id="featuredGames"></div>
+        </details>
+
+        <hr>
+
+        <details open>
+            <summary>All Games</summary>
+            <div class="game-grid" id="gameGrid">Loading...</div>
+            <div class="no-results" id="noResults" style="display: none;"></div>
+        </details>
+    </main>
+
+    <div class="game-viewer" id="gameViewer">
+        <div class="viewer-header">
+            <div class="viewer-title" id="gameName">Game</div>
+            <div class="viewer-controls">
+                <button onclick="downloadGame()">⬇ Download</button>
+                <button onclick="openNewTab()">🔗 New Tab</button>
+                <button onclick="closeViewer()">✕ Close</button>
+            </div>
+        </div>
+        <iframe id="gameFrame"></iframe>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#" onclick="showAbout(); return false;">About</a>
+            <a href="#" onclick="showContact(); return false;">Contact</a>
+            <a href="#" onclick="showSettings(); return false;">Settings</a>
+        </div>
+    </footer>
+
+    <script>
+        const gameGrid = document.getElementById('gameGrid');
+        const featuredContainer = document.getElementById('featuredGames');
+        const searchBar = document.getElementById('searchBar');
+        const categoryFilter = document.getElementById('categoryFilter');
+        const sortOptions = document.getElementById('sortOptions');
+        const gameViewer = document.getElementById('gameViewer');
+        const gameFrame = document.getElementById('gameFrame');
+        const gameName = document.getElementById('gameName');
+        const gameCount = document.getElementById('gameCount');
+        const noResults = document.getElementById('noResults');
+
+        const ZONES_URL = 'https://cdn.jsdelivr.net/gh/RedXSgn/sigma-games@main/zones.json';
+        const GAMES_URL = 'https://cdn.jsdelivr.net/gh/selenite-cc/selenite-old@main/';
+
+        let allGames = [];
+        let filteredGames = [];
+        let currentGameId = null;
+
+        async function loadGames() {
+            try {
+                const response = await fetch(ZONES_URL + '?t=' + Date.now());
+                const data = await response.json();
+                allGames = data;
+                setupFilters();
+                sortGames();
+                displayGames();
+            } catch (error) {
+                console.error('Error loading games:', error);
+                gameGrid.innerHTML = `<div class="no-results">Error loading games: ${error.message}</div>`;
+            }
+        }
+
+        function setupFilters() {
+            const categories = new Set();
+            allGames.forEach(game => {
+                if (game.special && Array.isArray(game.special)) {
+                    game.special.forEach(cat => categories.add(cat));
+                }
+            });
+
+            const fragment = document.createDocumentFragment();
+            Array.from(categories).sort().forEach(cat => {
+                const option = document.createElement('option');
+                option.value = cat;
+                option.textContent = cat.charAt(0).toUpperCase() + cat.slice(1);
+                fragment.appendChild(option);
+            });
+            categoryFilter.appendChild(fragment);
+        }
+
+        function sortGames() {
+            const sortBy = sortOptions.value;
+            if (sortBy === 'name') {
+                allGames.sort((a, b) => a.name.localeCompare(b.name));
+            } else if (sortBy === 'id') {
+                allGames.sort((a, b) => a.id - b.id);
+            } else if (sortBy === 'category') {
+                allGames.sort((a, b) => {
+                    const catA = (a.special?.[0] || 'z').toLowerCase();
+                    const catB = (b.special?.[0] || 'z').toLowerCase();
+                    return catA.localeCompare(catB);
+                });
+            }
+            filterGames();
+        }
+
+        function filterGames() {
+            const searchTerm = searchBar.value.toLowerCase();
+            const selectedCategory = categoryFilter.value;
+
+            filteredGames = allGames.filter(game => {
+                const matchesSearch = game.name.toLowerCase().includes(searchTerm);
+                const matchesCategory = !selectedCategory || (game.special && game.special.includes(selectedCategory));
+                return matchesSearch && matchesCategory;
+            });
+
+            displayGames();
+        }
+
+        function displayGames() {
+            const featured = allGames.filter(g => g.featured);
+            if (featured.length > 0) {
+                displayFeaturedGames(featured);
+            }
+
+            gameGrid.innerHTML = '';
+            if (filteredGames.length === 0) {
+                noResults.style.display = 'block';
+                gameCount.textContent = 'No games found';
+                return;
+            }
+
+            noResults.style.display = 'none';
+            gameCount.textContent = `Showing ${filteredGames.length} of ${allGames.length} games`;
+
+            filteredGames.forEach((game, index) => {
+                const card = createGameCard(game);
+                card.style.animationDelay = `${index * 0.05}s`;
+                gameGrid.appendChild(card);
+            });
+        }
+
+        function displayFeaturedGames(games) {
+            featuredContainer.innerHTML = '';
+            games.forEach((game, index) => {
+                const card = createGameCard(game);
+                card.style.animationDelay = `${index * 0.05}s`;
+                featuredContainer.appendChild(card);
+            });
+        }
+
+        function createGameCard(game) {
+            const card = document.createElement('div');
+            card.className = 'game-card';
+
+            const imageUrl = game.cover.replace('{HTML_URL}', GAMES_URL);
+            const thumbnail = document.createElement('div');
+            thumbnail.className = 'game-thumbnail';
+
+            const img = document.createElement('img');
+            img.src = imageUrl;
+            img.alt = game.name;
+            img.loading = 'lazy';
+            img.onerror = function() {
+                this.parentElement.classList.add('no-image');
+                this.style.display = 'none';
+            };
+            thumbnail.appendChild(img);
+            card.appendChild(thumbnail);
+
+            const info = document.createElement('div');
+            info.className = 'game-info';
+
+            const category = document.createElement('div');
+            category.className = 'game-category';
+            category.textContent = (game.special?.[0] || 'Game').toUpperCase();
+            info.appendChild(category);
+
+            const name = document.createElement('div');
+            name.className = 'game-name';
+            name.textContent = game.name;
+            info.appendChild(name);
+
+            const btn = document.createElement('button');
+            btn.className = 'play-btn';
+            btn.textContent = '▶ PLAY';
+            btn.onclick = (e) => {
+                e.stopPropagation();
+                openGame(game);
+            };
+            info.appendChild(btn);
+
+            card.appendChild(info);
+            card.onclick = () => openGame(game);
+
+            return card;
+        }
+
+        function openGame(game) {
+            const gameUrl = game.url.replace('{HTML_URL}', GAMES_URL).replace('{COVER_URL}', GAMES_URL);
+            gameName.textContent = game.name;
+            currentGameId = game.id;
+
+            gameFrame.src = gameUrl;
+            gameViewer.classList.add('active');
+
+            try {
+                const url = new URL(window.location);
+                url.searchParams.set('game', game.id);
+                history.pushState(null, '', url.toString());
+            } catch (e) {}
+        }
+
+        function closeViewer() {
+            gameViewer.classList.remove('active');
+            gameFrame.src = '';
+            try {
+                const url = new URL(window.location);
+                url.searchParams.delete('game');
+                history.pushState(null, '', url.toString());
+            } catch (e) {}
+        }
+
+        function openNewTab() {
+            const game = allGames.find(g => g.id === currentGameId);
+            if (game) {
+                const gameUrl = game.url.replace('{HTML_URL}', GAMES_URL).replace('{COVER_URL}', GAMES_URL);
+                window.open(gameUrl, '_blank');
+            }
+        }
+
+        function downloadGame() {
+            const game = allGames.find(g => g.id === currentGameId);
+            if (game) {
+                const gameUrl = game.url.replace('{HTML_URL}', GAMES_URL).replace('{COVER_URL}', GAMES_URL);
+                fetch(gameUrl).then(r => r.text()).then(html => {
+                    const blob = new Blob([html], { type: 'text/html' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `${game.name}.html`;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                });
+            }
+        }
+
+        function showAbout() {
+            alert('🎮 VOIDLESSFROG\n\nA free gaming hub with 50+ unblocked games.\n\nFeaturing games like DOOM, Geometry Dash, 1v1.lol, Cookie Clicker and many more!\n\nMade by hohogames\nHosted by RedXSgn');
+        }
+
+        function showContact() {
+            alert('📧 Contact\n\nEmail: redxsgn@example.com\nGitHub: github.com/RedXSgn');
+        }
+
+        function showSettings() {
+            alert('⚙️ Settings\n\nSettings coming soon!');
+        }
+
+        // Load games on page load
+        loadGames();
+    </script>
+</body>
+</html>

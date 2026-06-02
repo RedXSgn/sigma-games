@@ -1,317 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <base href="https://cdn.jsdelivr.net/gh/selenite-cc/selenite-old@main/" />
-  <title>SIGMA GAMES</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      color-scheme: dark;
-      --bg: #04050d;
-      --surface: rgba(14, 16, 31, 0.86);
-      --surface-strong: rgba(20, 24, 45, 0.95);
-      --text: #e8efff;
-      --muted: #99a8ff;
-      --accent: #9f5fff;
-      --accent-soft: rgba(159, 95, 255, 0.18);
-      --line: rgba(255,255,255,0.06);
-      --shadow: 0 20px 60px rgba(0,0,0,.4);
-      --border: rgba(255,255,255,0.08);
-      font-family: 'Inter', system-ui, sans-serif;
-      scroll-behavior: smooth;
-    }
-    * { box-sizing: border-box; }
-    html, body { min-height: 100%; background: radial-gradient(circle at top, rgba(92, 55, 255,0.22), transparent 28%), radial-gradient(circle at center, rgba(96, 255, 240,0.08), transparent 36%), #04050d; margin: 0; color: var(--text); }
-    body { overflow-x: hidden; }
-    body::before { content: ''; position: fixed; inset: 0; pointer-events: none; background-image: linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 96px 96px; opacity: 0.34; }
-    body::after { content: ''; position: fixed; inset: 0; pointer-events: none; background-image: radial-gradient(circle at 20% 15%, rgba(159,95,255,0.20), transparent 20%), radial-gradient(circle at 80% 10%, rgba(0,187,255,0.18), transparent 16%), radial-gradient(circle at 40% 90%, rgba(105, 0, 255,0.18), transparent 12%); }
-    .page { position: relative; max-width: 1440px; margin: 0 auto; padding: 28px 24px 48px; }
-    .topbar { display: flex; flex-wrap: wrap; gap: 14px; justify-content: space-between; align-items: center; margin-bottom: 24px; }
-    .brand { display: flex; align-items: center; gap: 14px; }
-    .brand h1 { margin: 0; font-size: clamp(2.1rem, 3vw, 3.2rem); letter-spacing: -0.06em; }
-    .brand small { color: var(--muted); text-transform: uppercase; letter-spacing: 0.24em; font-size: 0.78rem; }
-    .toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
-    .toolbar input, .toolbar button { min-width: 220px; border: 1px solid var(--border); background: rgba(14,16,31,0.88); color: var(--text); border-radius: 16px; padding: 14px 16px; font: inherit; }
-    .toolbar input { flex: 1 1 320px; }
-    .toolbar button { cursor: pointer; transition: transform .2s ease, background .2s ease; }
-    .toolbar button:hover { transform: translateY(-1px); background: rgba(159,95,255,0.16); }
-    .welcome-card { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 18px; padding: 22px 24px; margin-bottom: 24px; border-radius: 28px; background: rgba(12, 14, 27, 0.92); border: 1px solid rgba(255,255,255,0.08); box-shadow: var(--shadow); }
-    .welcome-card h2 { margin: 0; font-size: clamp(1.6rem, 2vw, 2.4rem); }
-    .welcome-card p { margin: 10px 0 0; max-width: 720px; color: var(--muted); line-height: 1.6; }
-    .btn-primary { border: 1px solid var(--border); background: rgba(159,95,255,0.9); color: #fff; border-radius: 999px; padding: 14px 20px; cursor: pointer; font-weight: 700; transition: transform .2s ease, filter .2s ease; }
-    .btn-primary:hover { transform: translateY(-1px); filter: brightness(1.05); }
-    .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; filter: none; }
-    .preview-actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: flex-end; }
-    .preview-actions button { min-width: unset; }
-    .panel { display: grid; gap: 12px; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-bottom: 24px; }
-    .card { border: 1px solid var(--border); background: var(--surface); border-radius: 28px; box-shadow: var(--shadow); overflow: hidden; position: relative; backdrop-filter: blur(18px); }
-    .card::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(255,255,255,0.08), transparent 35%); }
-    .card h2 { margin: 0; font-size: 1.25rem; }
-    .card p { color: var(--muted); margin: 0.35rem 0 0; line-height: 1.7; }
-    .card-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 12px; gap: 10px; }
-    .badger { text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.7rem; color: #c0b9ff; }
-    .grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
-    .game-card { display: flex; flex-direction: column; gap: 16px; padding: 18px; background: rgba(6, 9, 20, 0.82); border-radius: 26px; border: 1px solid rgba(255,255,255,0.08); transition: transform .24s ease, border-color .24s ease; }
-    .game-card:hover { transform: translateY(-4px); border-color: rgba(159,95,255,0.24); }
-    .game-card img { width: 100%; aspect-ratio: 16 / 10; object-fit: contain; border-radius: 16px; background: linear-gradient(135deg, rgba(159,95,255,0.16), rgba(40,43,75,0.85)); }
-    .game-card .meta { display: grid; gap: 8px; }
-    .game-card strong { font-size: 1rem; display: block; }
-    .game-card small { color: var(--muted); }
-    .game-card button { border: 0; border-radius: 999px; padding: 12px 16px; background: rgba(159,95,255,0.95); color: white; cursor: pointer; font-weight: 600; transition: transform .2s ease, filter .2s ease; }
-    .game-card button:hover { transform: translateY(-1px); filter: brightness(1.05); }
-    .iframe-panel { display: grid; gap: 12px; margin-top: 30px; }
-    .preview-header { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
-    .preview-frame { width: 100%; min-height: 520px; border: 1px solid rgba(255,255,255,0.1); border-radius: 28px; overflow: hidden; background: #01020b; box-shadow: var(--shadow); }
-    .preview-frame iframe { width: 100%; min-height: 520px; border: 0; }
-    .notice { color: var(--muted); font-size: 0.92rem; }
-    .settings { display: flex; flex-wrap: wrap; gap: 10px; }
-    .toggle { display: inline-flex; align-items: center; gap: 10px; padding: 12px 14px; border: 1px solid var(--border); background: rgba(14,16,31,0.9); border-radius: 999px; cursor: pointer; transition: background .2s ease; }
-    .toggle input { accent-color: var(--accent); }
-    .cursor-glow { position: fixed; top: 0; left: 0; width: 80px; height: 80px; pointer-events: none; transform: translate(-50%, -50%); border-radius: 50%; mix-blend-mode: screen; background: radial-gradient(circle, rgba(159,95,255,0.35), transparent 45%); opacity: 0; transition: opacity .2s ease; z-index: 30; }
-    .line-grid { position: fixed; inset: 0; pointer-events: none; background-image: linear-gradient(180deg, rgba(159,95,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(96, 206, 255,0.04) 1px, transparent 1px); background-size: 120px 120px; mix-blend-mode: overlay; opacity: 0.7; }
-    @media (max-width: 680px) { .topbar { flex-direction: column; align-items: stretch; } .preview-header { flex-direction: column; align-items: stretch; } }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voidlessfrog - Game Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #0a1a0a 0%, #0a3a0a 50%, #051505 100%);
+            color: #00ff14;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px #00ff14, 0 0 40px rgba(0, 255, 20, 0.5);
+            letter-spacing: 2px;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #00dd00;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #00ff14 0%, #00dd00 100%);
+            color: #0a0a0a;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(0, 255, 20, 0.3);
+            letter-spacing: 1px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 255, 20, 0.6);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: rgba(0, 255, 20, 0.1);
+            color: #00ff14;
+            border: 2px solid #00ff14;
+            background: transparent;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 255, 20, 0.2);
+        }
+
+        .features {
+            background: rgba(0, 30, 0, 0.7);
+            border: 2px solid #00aa00;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features h3 {
+            color: #00ff14;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(0, 255, 20, 0.5);
+        }
+
+        .features ul {
+            list-style: none;
+            text-align: left;
+        }
+
+        .features li {
+            padding: 0.5rem 0;
+            color: #00dd00;
+            border-bottom: 1px solid rgba(0, 255, 20, 0.2);
+        }
+
+        .features li:last-child {
+            border-bottom: none;
+        }
+
+        .features li::before {
+            content: "▶ ";
+            color: #00ff14;
+            margin-right: 0.5rem;
+        }
+
+        .credit {
+            margin-top: 2rem;
+            color: #00bb00;
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                text-shadow: 0 0 20px #00ff14, 0 0 40px rgba(0, 255, 20, 0.5);
+            }
+            50% {
+                text-shadow: 0 0 30px #00ff14, 0 0 60px rgba(0, 255, 20, 0.8);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="line-grid"></div>
-  <div class="cursor-glow" id="cursorGlow"></div>
-  <main class="page">
-    <div class="topbar">
-      <div class="brand">
-        <div style="width:44px;height:44px;border-radius:16px;background:rgba(159,95,255,0.18);display:flex;align-items:center;justify-content:center;">S</div>
-        <div>
-          <small>SIGMA GAMES</small>
-          <h1>All your retro and web games</h1>
+    <div class="container">
+        <h1>⚡ VOIDLESSFROG ⚡</h1>
+        <p class="subtitle">~ Infinite Gaming Portal ~</p>
+
+        <div class="buttons">
+            <a href="voidlessfrog-hub.html" class="btn">🎮 PLAY GAMES (Hub)</a>
+            <a href="voidlessfrog.html" class="btn btn-secondary">▶ SINGLE PLAYER</a>
         </div>
-      </div>
-      <div class="toolbar">
-        <input id="searchInput" type="search" placeholder="Search games, genres, names..." autocomplete="off" />
-        <button id="settingsOpen">Settings</button>
-      </div>
+
+        <div class="features">
+            <h3>✨ Features</h3>
+            <ul>
+                <li>50+ Unblocked Games</li>
+                <li>Search & Filter Games</li>
+                <li>Download Games Locally</li>
+                <li>View Game Source Code</li>
+                <li>Fast CDN Loading</li>
+                <li>Mobile Friendly</li>
+                <li>No Bloat - Pure Games</li>
+            </ul>
+        </div>
+
+        <p class="credit">Made with ⚡ by hohogames</p>
     </div>
-
-    <section class="welcome-card">
-      <div>
-        <h2>WELCOME TO SIGMA GAMES</h2>
-        <p>Click the game list below to see games. Select any tile to load its index.html in the preview player, or open it in a new tab for full-screen play.</p>
-      </div>
-      <button class="btn-primary" id="scrollGames">View game list</button>
-    </section>
-
-    <section class="panel">
-      <div class="card">
-        <div>
-          <h2>CDN game launcher</h2>
-          <p>Uses jsDelivr base loading so each game can run from the remote repository. Click any tile to open it in the embedded player.</p>
-        </div>
-        <div class="card-footer">
-          <span class="badger">Live CDN base</span>
-          <span class="notice">Base: jsdelivr.net/gh/selenite-cc/selenite-old@main</span>
-        </div>
-      </div>
-      <div class="card">
-        <div>
-          <h2>Game zones</h2>
-          <p>Each tile is assigned a zone path based on the game directory. Images and index assets load automatically from the same zone.</p>
-        </div>
-        <div class="card-footer">
-          <span class="badger">Dynamic loader</span>
-          <span class="notice">Zone-based images and previews</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="settings" id="settingsPanel" style="display:none; margin-bottom:22px;">
-      <label class="toggle"><input type="checkbox" id="togglePurple" checked /> Purple theme</label>
-      <label class="toggle"><input type="checkbox" id="toggleParticles" checked /> Background lines</label>
-      <label class="toggle"><input type="checkbox" id="toggleCursor" checked /> Cursor glow</label>
-    </section>
-
-    <section class="iframe-panel">
-      <div class="preview-header">
-        <div>
-          <h2 id="previewTitle">Select a game to preview</h2>
-          <p class="notice">Game content loads from jsDelivr in an iframe. If a game path is missing, the tile is still built from the remote catalog.</p>
-        </div>
-        <div class="preview-actions">
-          <button class="btn-primary" id="playButton" type="button" disabled>Play in panel</button>
-          <button class="btn-primary" id="openNewTab" type="button" disabled>Open in new tab</button>
-          <button id="resetButton">Reset player</button>
-        </div>
-      </div>
-      <div class="preview-frame" id="previewFrame">
-        <iframe id="previewIframe" srcdoc="<style>*{margin:0;padding:0;font-family:system-ui,sans-serif;background:#050613;color:#bbb;display:flex;align-items:center;justify-content:center;height:100vh}</style><div><strong>Click a game tile to load the demo here.</strong></div>" sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
-      </div>
-    </section>
-
-    <div class="grid" id="gamesGrid"></div>
-  </main>
-
-  <script>
-    const CDN_BASE = './selenite-old/';
-    const searchInput = document.getElementById('searchInput');
-    const gamesGrid = document.getElementById('gamesGrid');
-    const previewFrame = document.getElementById('previewFrame');
-    const previewIframe = document.getElementById('previewIframe');
-    const previewTitle = document.getElementById('previewTitle');
-    const playButton = document.getElementById('playButton');
-    const openNewTab = document.getElementById('openNewTab');
-    const scrollGames = document.getElementById('scrollGames');
-    const settingsOpen = document.getElementById('settingsOpen');
-    const settingsPanel = document.getElementById('settingsPanel');
-    const resetButton = document.getElementById('resetButton');
-    const togglePurple = document.getElementById('togglePurple');
-    const toggleParticles = document.getElementById('toggleParticles');
-    const toggleCursor = document.getElementById('toggleCursor');
-    const cursorGlow = document.getElementById('cursorGlow');
-    const body = document.body;
-    let currentGame = null;
-
-    const gameZones = new Proxy({}, {
-      get(_, key) {
-        return key ? `${CDN_BASE}${key}/` : CDN_BASE;
-      }
-    });
-
-    const fallbackGames = [
-      { name: 'Flappy Plane', directory: 'flappyplane', image: 'favicon.ico', recommended: '1' },
-      { name: 'Friday Night Funkin', directory: 'fridaynightfunkin', image: 'fnf-icon.jpg', recommended: '1' },
-      { name: 'Pong', directory: 'pong', image: 'cover.svg', recommended: '1' }
-    ];
-
-    function createGameCard(game) {
-      const zone = gameZones[game.directory];
-      const previewUrl = `${zone}index.html`;
-      const image = `${zone}${game.image || 'cover.svg'}`;
-      const card = document.createElement('article');
-      card.className = 'game-card';
-      card.dataset.zone = zone;
-      card.dataset.name = game.name.toLowerCase();
-      card.innerHTML = `
-        <img loading="lazy" src="${image}" alt="${game.name}" onerror="this.src='https://via.placeholder.com/560x350/1b1f38/888?text=No+Tile'" />
-        <div class="meta">
-          <strong>${game.name}</strong>
-          <small>Zone: ${game.directory}</small>
-        </div>
-        <div class="card-footer" style="margin-top:auto;">
-          <button type="button">Play now</button>
-          <span class="badger">${game.recommended ? 'Popular' : 'Game'}</span>
-        </div>
-      `;
-      card.querySelector('button').addEventListener('click', (event) => {
-        event.stopPropagation();
-        loadGame(game);
-      });
-      card.addEventListener('click', () => loadGame(game));
-      return card;
-    }
-
-    function loadGame(game) {
-      currentGame = game;
-      const zone = gameZones[game.directory];
-      const previewUrl = `${zone}index.html`;
-      previewIframe.src = previewUrl;
-      previewTitle.textContent = `Loading: ${game.name}`;
-      playButton.disabled = false;
-      openNewTab.disabled = false;
-      previewIframe.onload = () => {
-        previewTitle.textContent = `Playing: ${game.name}`;
-        try {
-          previewIframe.contentWindow.document.title = `SIGMA GAMES · ${game.name}`;
-        } catch (error) {
-          // ignore cross-origin iframe restrictions
-        }
-      };
-    }
-
-    function resetPreview() {
-      currentGame = null;
-      previewIframe.srcdoc = '<style>*{margin:0;padding:0;font-family:system-ui,sans-serif;background:#050613;color:#bbb;display:flex;align-items:center;justify-content:center;height:100vh}</style><div><strong>Click a game tile to load the demo here.</strong></div>';
-      previewTitle.textContent = 'Select a game to preview';
-      playButton.disabled = true;
-      openNewTab.disabled = true;
-    }
-
-    function setThemeState() {
-      if (togglePurple.checked) {
-        document.documentElement.style.setProperty('--accent', '#9f5fff');
-        document.documentElement.style.setProperty('--accent-soft', 'rgba(159,95,255,0.18)');
-      } else {
-        document.documentElement.style.setProperty('--accent', '#2db7ff');
-        document.documentElement.style.setProperty('--accent-soft', 'rgba(45,183,255,0.16)');
-      }
-      document.querySelectorAll('button').forEach(btn => btn.style.background = togglePurple.checked ? 'rgba(159,95,255,0.95)' : 'rgba(45,183,255,0.95)');
-    }
-
-    function openCurrentGameInNewTab() {
-      if (!currentGame) return;
-      const zone = gameZones[currentGame.directory];
-      window.open(`${zone}index.html`, '_blank');
-    }
-
-    function playCurrentGame() {
-      if (!currentGame) return;
-      loadGame(currentGame);
-    }
-
-    function updateLineGrid() {
-      document.querySelector('.line-grid').style.opacity = toggleParticles.checked ? '0.7' : '0';
-    }
-
-    function updateCursorGlow() {
-      cursorGlow.style.opacity = toggleCursor.checked ? '1' : '0';
-    }
-
-    function applySearch() {
-      const query = searchInput.value.trim().toLowerCase();
-      Array.from(gamesGrid.children).forEach(card => {
-        card.style.display = card.dataset.name.includes(query) ? 'grid' : 'none';
-      });
-    }
-
-    function populateGames(games) {
-      gamesGrid.innerHTML = '';
-      games.forEach(game => gamesGrid.appendChild(createGameCard(game)));
-    }
-
-    settingsOpen.addEventListener('click', () => {
-      settingsPanel.style.display = settingsPanel.style.display === 'none' ? 'flex' : 'none';
-      settingsPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    });
-    searchInput.addEventListener('input', applySearch);
-    resetButton.addEventListener('click', resetPreview);
-    playButton.addEventListener('click', playCurrentGame);
-    openNewTab.addEventListener('click', openCurrentGameInNewTab);
-    scrollGames.addEventListener('click', () => gamesGrid.scrollIntoView({ behavior: 'smooth', block: 'start' }));
-    togglePurple.addEventListener('change', setThemeState);
-    toggleParticles.addEventListener('change', updateLineGrid);
-    toggleCursor.addEventListener('change', updateCursorGlow);
-
-    document.addEventListener('mousemove', (event) => {
-      if (!toggleCursor.checked) return;
-      cursorGlow.style.left = `${event.clientX}px`;
-      cursorGlow.style.top = `${event.clientY}px`;
-    });
-
-    async function init() {
-      setThemeState();
-      updateLineGrid();
-      updateCursorGlow();
-      try {
-        const response = await fetch('./selenite-old/games.json');
-        const games = await response.json();
-        populateGames(Array.isArray(games) ? games : fallbackGames);
-      } catch (error) {
-        console.warn('Failed to load remote game catalog, using fallback games.', error);
-        populateGames(fallbackGames);
-      }
-    }
-
-    init();
-  </script>
 </body>
 </html>

@@ -1,0 +1,456 @@
+[
+    {
+        "id": 1,
+        "name": "DOOM",
+        "folder": "doom",
+        "author": "id Software",
+        "featured": true,
+        "cover": "{HTML_URL}/1.jpg",
+        "url": "{HTML_URL}/1/index.html",
+        "special": ["action", "classic"]
+    },
+    {
+        "id": 2,
+        "name": "Geometry Dash",
+        "folder": "geometrydash",
+        "author": "RobTop Games",
+        "featured": true,
+        "cover": "{HTML_URL}/2.jpg",
+        "url": "{HTML_URL}/2/index.html",
+        "special": ["arcade", "rhythm"]
+    },
+    {
+        "id": 3,
+        "name": "Slope",
+        "folder": "slope",
+        "author": "Y8",
+        "featured": true,
+        "cover": "{HTML_URL}/3.jpg",
+        "url": "{HTML_URL}/3/index.html",
+        "special": ["racing", "arcade"]
+    },
+    {
+        "id": 4,
+        "name": "1v1.lol",
+        "folder": "1v1lol",
+        "author": "jfx",
+        "featured": true,
+        "cover": "{HTML_URL}/4.jpg",
+        "url": "{HTML_URL}/4/index.html",
+        "special": ["multiplayer", "action"]
+    },
+    {
+        "id": 5,
+        "name": "Flappy Bird",
+        "folder": "flappybird",
+        "author": "Dong Nguyen",
+        "cover": "{HTML_URL}/5.jpg",
+        "url": "{HTML_URL}/5/index.html",
+        "special": ["arcade", "classic"]
+    },
+    {
+        "id": 6,
+        "name": "Tetris",
+        "folder": "tetris",
+        "author": "Alexey Pajitnov",
+        "cover": "{HTML_URL}/6.jpg",
+        "url": "{HTML_URL}/6/index.html",
+        "special": ["puzzle", "classic"]
+    },
+    {
+        "id": 7,
+        "name": "Cookie Clicker",
+        "folder": "cookieclicker",
+        "author": "Orteil",
+        "cover": "{HTML_URL}/7.jpg",
+        "url": "{HTML_URL}/7/index.html",
+        "special": ["idle", "casual"]
+    },
+    {
+        "id": 8,
+        "name": "Celeste",
+        "folder": "celeste",
+        "author": "Maddy Makes Games",
+        "cover": "{HTML_URL}/8.jpg",
+        "url": "{HTML_URL}/8/index.html",
+        "special": ["platformer", "adventure"]
+    },
+    {
+        "id": 9,
+        "name": "Vex 5",
+        "folder": "vex5",
+        "author": "RHM Interactive",
+        "cover": "{HTML_URL}/9.jpg",
+        "url": "{HTML_URL}/9/index.html",
+        "special": ["platformer", "action"]
+    },
+    {
+        "id": 10,
+        "name": "2048",
+        "folder": "2048",
+        "author": "Gabriele Cirulli",
+        "cover": "{HTML_URL}/10.jpg",
+        "url": "{HTML_URL}/10/index.html",
+        "special": ["puzzle", "strategy"]
+    },
+    {
+        "id": 11,
+        "name": "Friday Night Funkin",
+        "folder": "fridaynightfunkin",
+        "author": "ninjamuffin99",
+        "cover": "{HTML_URL}/11.jpg",
+        "url": "{HTML_URL}/11/index.html",
+        "special": ["music", "rhythm"]
+    },
+    {
+        "id": 12,
+        "name": "Cut The Rope",
+        "folder": "cuttherope",
+        "author": "ZeptoLab",
+        "cover": "{HTML_URL}/12.jpg",
+        "url": "{HTML_URL}/12/index.html",
+        "special": ["puzzle", "casual"]
+    },
+    {
+        "id": 13,
+        "name": "Chess",
+        "folder": "chess",
+        "author": "Chess.com",
+        "cover": "{HTML_URL}/13.jpg",
+        "url": "{HTML_URL}/13/index.html",
+        "special": ["strategy", "casual"]
+    },
+    {
+        "id": 14,
+        "name": "Subway Surfers",
+        "folder": "subway-surfers-ny",
+        "author": "Kiloo",
+        "cover": "{HTML_URL}/14.jpg",
+        "url": "{HTML_URL}/14/index.html",
+        "special": ["runner", "arcade"]
+    },
+    {
+        "id": 15,
+        "name": "Gun Mayhem",
+        "folder": "gunmayhem",
+        "author": "Seabass",
+        "cover": "{HTML_URL}/15.jpg",
+        "url": "{HTML_URL}/15/index.html",
+        "special": ["action", "shooter"]
+    },
+    {
+        "id": 16,
+        "name": "Basketball Stars",
+        "folder": "basketball-stars",
+        "author": "Miniclip",
+        "cover": "{HTML_URL}/16.jpg",
+        "url": "{HTML_URL}/16/index.html",
+        "special": ["sports", "casual"]
+    },
+    {
+        "id": 17,
+        "name": "Drift Boss",
+        "folder": "drift-boss",
+        "author": "Miniclip",
+        "cover": "{HTML_URL}/17.jpg",
+        "url": "{HTML_URL}/17/index.html",
+        "special": ["racing", "arcade"]
+    },
+    {
+        "id": 18,
+        "name": "Duck Life 4",
+        "folder": "ducklife4",
+        "author": "Metamoki",
+        "cover": "{HTML_URL}/18.jpg",
+        "url": "{HTML_URL}/18/index.html",
+        "special": ["simulation", "casual"]
+    },
+    {
+        "id": 19,
+        "name": "Bloons Tower Defense 5",
+        "folder": "btd5",
+        "author": "Ninja Kiwi",
+        "cover": "{HTML_URL}/19.jpg",
+        "url": "{HTML_URL}/19/index.html",
+        "special": ["strategy", "tower-defense"]
+    },
+    {
+        "id": 20,
+        "name": "Superhot",
+        "folder": "superhot",
+        "author": "Superhot Team",
+        "cover": "{HTML_URL}/20.jpg",
+        "url": "{HTML_URL}/20/index.html",
+        "special": ["action", "shooter"]
+    },
+    {
+        "id": 21,
+        "name": "Wordle",
+        "folder": "wordle",
+        "author": "Josh Wardle",
+        "cover": "{HTML_URL}/21.jpg",
+        "url": "{HTML_URL}/21/index.html",
+        "special": ["puzzle", "casual"]
+    },
+    {
+        "id": 22,
+        "name": "Adventure Capitalist",
+        "folder": "adventure-capitalist",
+        "author": "Hyper Hippo",
+        "cover": "{HTML_URL}/22.jpg",
+        "url": "{HTML_URL}/22/index.html",
+        "special": ["idle", "casual"]
+    },
+    {
+        "id": 23,
+        "name": "Crossy Road",
+        "folder": "crossyroad",
+        "author": "Hipster Whale",
+        "cover": "{HTML_URL}/23.jpg",
+        "url": "{HTML_URL}/23/index.html",
+        "special": ["arcade", "casual"]
+    },
+    {
+        "id": 24,
+        "name": "Fireboy & Watergirl 1",
+        "folder": "fireboywatergirl",
+        "author": "Oslo Albet",
+        "cover": "{HTML_URL}/24.jpg",
+        "url": "{HTML_URL}/24/index.html",
+        "special": ["puzzle", "coop"]
+    },
+    {
+        "id": 25,
+        "name": "Dino",
+        "folder": "dino",
+        "author": "Google",
+        "cover": "{HTML_URL}/25.jpg",
+        "url": "{HTML_URL}/25/index.html",
+        "special": ["arcade", "casual"]
+    },
+    {
+        "id": 26,
+        "name": "Pac-Man",
+        "folder": "pacman",
+        "author": "Namco",
+        "cover": "{HTML_URL}/26.jpg",
+        "url": "{HTML_URL}/26/index.html",
+        "special": ["arcade", "classic"]
+    },
+    {
+        "id": 27,
+        "name": "Cell Machine",
+        "folder": "cell-machine",
+        "author": "Faraday",
+        "cover": "{HTML_URL}/27.jpg",
+        "url": "{HTML_URL}/27/index.html",
+        "special": ["puzzle", "strategy"]
+    },
+    {
+        "id": 28,
+        "name": "Moto X3M",
+        "folder": "motox3m",
+        "author": "MadPuffers",
+        "cover": "{HTML_URL}/28.jpg",
+        "url": "{HTML_URL}/28/index.html",
+        "special": ["racing", "action"]
+    },
+    {
+        "id": 29,
+        "name": "Doodle Jump",
+        "folder": "doodlejump",
+        "author": "Lima Sky",
+        "cover": "{HTML_URL}/29.jpg",
+        "url": "{HTML_URL}/29/index.html",
+        "special": ["arcade", "casual"]
+    },
+    {
+        "id": 30,
+        "name": "Clicker Heroes",
+        "folder": "clickerheroes",
+        "author": "Playsaurus",
+        "cover": "{HTML_URL}/30.jpg",
+        "url": "{HTML_URL}/30/index.html",
+        "special": ["idle", "casual"]
+    },
+    {
+        "id": 31,
+        "name": "Among Us",
+        "folder": "amongus",
+        "author": "Innersloth",
+        "cover": "{HTML_URL}/31.jpg",
+        "url": "{HTML_URL}/31/index.html",
+        "special": ["multiplayer", "casual"]
+    },
+    {
+        "id": 32,
+        "name": "Doge Miner",
+        "folder": "dogeminer",
+        "author": "hypersign",
+        "cover": "{HTML_URL}/32.jpg",
+        "url": "{HTML_URL}/32/index.html",
+        "special": ["idle", "casual"]
+    },
+    {
+        "id": 33,
+        "name": "Geometry Rash",
+        "folder": "geometryrash",
+        "author": "Minu Soft",
+        "cover": "{HTML_URL}/33.jpg",
+        "url": "{HTML_URL}/33/index.html",
+        "special": ["arcade", "action"]
+    },
+    {
+        "id": 34,
+        "name": "Cluster Rush",
+        "folder": "cluster-rush",
+        "author": "Crazy Games",
+        "cover": "{HTML_URL}/34.jpg",
+        "url": "{HTML_URL}/34/index.html",
+        "special": ["platformer", "action"]
+    },
+    {
+        "id": 35,
+        "name": "Dadish",
+        "folder": "dadish",
+        "author": "Dadish Games",
+        "cover": "{HTML_URL}/35.jpg",
+        "url": "{HTML_URL}/35/index.html",
+        "special": ["platformer", "casual"]
+    },
+    {
+        "id": 36,
+        "name": "Soccer Random",
+        "folder": "soccerrandom",
+        "author": "Madpuffers",
+        "cover": "{HTML_URL}/36.jpg",
+        "url": "{HTML_URL}/36/index.html",
+        "special": ["sports", "casual"]
+    },
+    {
+        "id": 37,
+        "name": "Baldi's Basics",
+        "folder": "baldis-basics",
+        "author": "mystman12",
+        "cover": "{HTML_URL}/37.jpg",
+        "url": "{HTML_URL}/37/index.html",
+        "special": ["adventure", "horror"]
+    },
+    {
+        "id": 38,
+        "name": "Escaping the Prison",
+        "folder": "escapingtheprison",
+        "author": "Henry Stickmin",
+        "cover": "{HTML_URL}/38.jpg",
+        "url": "{HTML_URL}/38/index.html",
+        "special": ["adventure", "casual"]
+    },
+    {
+        "id": 39,
+        "name": "Bloons Tower Defense 3",
+        "folder": "btd3",
+        "author": "Ninja Kiwi",
+        "cover": "{HTML_URL}/39.jpg",
+        "url": "{HTML_URL}/39/index.html",
+        "special": ["strategy", "tower-defense"]
+    },
+    {
+        "id": 40,
+        "name": "Bad Ice Cream",
+        "folder": "badicecream",
+        "author": "Nitrome",
+        "cover": "{HTML_URL}/40.jpg",
+        "url": "{HTML_URL}/40/index.html",
+        "special": ["puzzle", "casual"]
+    },
+    {
+        "id": 41,
+        "name": "Rocket League",
+        "folder": "rocketleague",
+        "author": "Psyonix",
+        "cover": "{HTML_URL}/41.jpg",
+        "url": "{HTML_URL}/41/index.html",
+        "special": ["sports", "action"]
+    },
+    {
+        "id": 42,
+        "name": "Learn to Fly",
+        "folder": "learntofly",
+        "author": "Kongregate",
+        "cover": "{HTML_URL}/42.jpg",
+        "url": "{HTML_URL}/42/index.html",
+        "special": ["puzzle", "casual"]
+    },
+    {
+        "id": 43,
+        "name": "Universal Paperclips",
+        "folder": "universal-paperclips",
+        "author": "Frank Lantz",
+        "cover": "{HTML_URL}/43.jpg",
+        "url": "{HTML_URL}/43/index.html",
+        "special": ["idle", "strategy"]
+    },
+    {
+        "id": 44,
+        "name": "BitLife",
+        "folder": "bitlife",
+        "author": "Candywriter",
+        "cover": "{HTML_URL}/44.jpg",
+        "url": "{HTML_URL}/44/index.html",
+        "special": ["simulation", "casual"]
+    },
+    {
+        "id": 45,
+        "name": "Stickman Hook",
+        "folder": "stickman-hook",
+        "author": "Madpuffers",
+        "cover": "{HTML_URL}/45.jpg",
+        "url": "{HTML_URL}/45/index.html",
+        "special": ["arcade", "action"]
+    },
+    {
+        "id": 46,
+        "name": "Little Alchemy",
+        "folder": "littlealchemy",
+        "author": "Jakub Koziol",
+        "cover": "{HTML_URL}/46.jpg",
+        "url": "{HTML_URL}/46/index.html",
+        "special": ["puzzle", "casual"]
+    },
+    {
+        "id": 47,
+        "name": "GBA Emulator",
+        "folder": "gba",
+        "author": "Retro",
+        "cover": "{HTML_URL}/47.jpg",
+        "url": "{HTML_URL}/47/index.html",
+        "special": ["retro", "emulator"]
+    },
+    {
+        "id": 48,
+        "name": "Vex 3",
+        "folder": "vex3",
+        "author": "RHM Interactive",
+        "cover": "{HTML_URL}/48.jpg",
+        "url": "{HTML_URL}/48/index.html",
+        "special": ["platformer", "action"]
+    },
+    {
+        "id": 49,
+        "name": "Funny Shooter",
+        "folder": "funnyshooter",
+        "author": "Miniclip",
+        "cover": "{HTML_URL}/49.jpg",
+        "url": "{HTML_URL}/49/index.html",
+        "special": ["action", "shooter"]
+    },
+    {
+        "id": 50,
+        "name": "Tunnel Rush",
+        "folder": "tunnelrush",
+        "author": "Deer Cat",
+        "cover": "{HTML_URL}/50.jpg",
+        "url": "{HTML_URL}/50/index.html",
+        "special": ["racing", "arcade"]
+    }
+]
